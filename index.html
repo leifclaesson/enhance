@@ -73,15 +73,26 @@
     font-family:var(--sans); letter-spacing:-.02em;
     font-size:clamp(46px,11vw,104px);
     color:var(--gold);
-    -webkit-text-stroke:2px #1a1206;
+    /* Outline comes from 8 offset shadows, NOT -webkit-text-stroke: the stroke is
+       applied per glyph contour, so on any face whose heavy italic is built from
+       overlapping components (Roboto -- what system-ui picks on Android) every
+       internal seam gets its own black box and the wordmark reads as shattered. */
     text-shadow:
+      2px 0 0 #1a1206, -2px 0 0 #1a1206, 0 2px 0 #1a1206, 0 -2px 0 #1a1206,
+      1.5px 1.5px 0 #1a1206, -1.5px 1.5px 0 #1a1206, 1.5px -1.5px 0 #1a1206, -1.5px -1.5px 0 #1a1206,
       3px 3px 0 var(--gold-deep),
       5px 5px 0 rgba(0,0,0,.55),
       0 0 34px rgba(255,138,30,.35);
     transform:rotate(-1.5deg); transform-origin:left center;
     display:inline-block;
   }
-  .word .bang{color:var(--red); -webkit-text-stroke:2px #1a0206; text-shadow:3px 3px 0 #b3121b,5px 5px 0 rgba(0,0,0,.55)}
+  .word .bang{
+    color:var(--red);
+    text-shadow:
+      2px 0 0 #1a0206, -2px 0 0 #1a0206, 0 2px 0 #1a0206, 0 -2px 0 #1a0206,
+      1.5px 1.5px 0 #1a0206, -1.5px 1.5px 0 #1a0206, 1.5px -1.5px 0 #1a0206, -1.5px -1.5px 0 #1a0206,
+      3px 3px 0 #b3121b, 5px 5px 0 rgba(0,0,0,.55);
+  }
   .subtitle{
     font-family:var(--mono); color:var(--ink-dim); margin:20px 0 0;
     font-size:clamp(12.5px,1.6vw,14.5px); letter-spacing:.05em;
